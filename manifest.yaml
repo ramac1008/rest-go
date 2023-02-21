@@ -46,3 +46,19 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "100m"
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress-to-external-ip
+  namespace: argocd
+spec:
+  podSelector:
+    matchLabels:
+      app: app-go-rest
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 35.232.116.88/32
