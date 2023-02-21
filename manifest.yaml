@@ -36,7 +36,7 @@ spec:
     spec: # Pod spec
       containers:
         - name: go-container
-          image: condorl/go-rest:v1.0
+          image: condorl/go-rest:v2.0
           ports:
             - containerPort: 8080
           resources:
