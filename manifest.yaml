@@ -15,16 +15,6 @@ spec:
     tier: frontend
   type: LoadBalancer
 ---
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: app-go-restv1.0
-  namespace: argocd
-data:
-  BG_COLOR: '#12181b'
-  FONT_COLOR: '#FFFFFF'
-  CUSTOM_HEADER: 'Customized with a configmap!'
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -49,9 +39,6 @@ spec:
           image: condorl/go-rest:v1.0
           ports:
             - containerPort: 8080
-          envFrom:
-            - configMapRef:
-                name: go-configmapv1.0
           resources:
             requests:
               memory: "16Mi"
